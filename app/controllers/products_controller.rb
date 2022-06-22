@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  layout 'navbar' 
   def index
     @products = Product.all
+    @order_item = current_order.order_items.new
   end
 
   def new 
